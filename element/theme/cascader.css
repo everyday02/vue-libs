@@ -460,7 +460,7 @@
 --------------------------*/
 .el-input {
   position: relative;
-  font-size: 14px;
+  font-size: 12px;
   display: inline-block;
   width: 100%; }
   .el-input::-webkit-scrollbar {
@@ -481,7 +481,7 @@
         width: 6px; }
   .el-input .el-input__clear {
     color: #c0c4cc;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 16px;
     cursor: pointer;
     -webkit-transition: color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -584,11 +584,11 @@
     .el-input--medium .el-input__icon {
       line-height: 36px; }
   .el-input--small {
-    font-size: 13px; }
+    font-size: 12px; }
     .el-input--small .el-input__inner {
-      height: 32px; }
+      height: 30px; }
     .el-input--small .el-input__icon {
-      line-height: 32px; }
+      line-height: 30px; }
   .el-input--mini {
     font-size: 12px; }
     .el-input--mini .el-input__inner {
@@ -647,7 +647,7 @@
   display: inline-block;
   width: 100%;
   vertical-align: bottom;
-  font-size: 14px; }
+  font-size: 12px; }
   .el-textarea__inner {
     display: block;
     resize: vertical;
@@ -1003,7 +1003,7 @@
 .el-cascader {
   display: inline-block;
   position: relative;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 40px; }
   .el-cascader .el-input,
   .el-cascader .el-input__inner {
@@ -1051,8 +1051,8 @@
     font-size: 14px;
     line-height: 36px; }
   .el-cascader--small {
-    font-size: 13px;
-    line-height: 32px; }
+    font-size: 12px;
+    line-height: 30px; }
   .el-cascader--mini {
     font-size: 12px;
     line-height: 28px; }
@@ -1089,7 +1089,7 @@
   .el-cascader-menu:last-child {
     border-right: 0; }
   .el-cascader-menu__item {
-    font-size: 14px;
+    font-size: 12px;
     padding: 8px 20px;
     position: relative;
     white-space: nowrap;

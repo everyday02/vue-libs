@@ -231,7 +231,7 @@
 .el-switch {
   display: inline-block;
   position: relative;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 20px;
   height: 20px;
   vertical-align: middle; }
@@ -243,7 +243,7 @@
     transition: .2s;
     height: 20px;
     display: inline-block;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 500;
     cursor: pointer;
     vertical-align: middle;
@@ -256,7 +256,7 @@
       margin-left: 10px; }
     .el-switch__label * {
       line-height: 1;
-      font-size: 14px;
+      font-size: 12px;
       display: inline-block; }
   .el-switch__input {
     position: absolute;

@@ -1,0 +1,50 @@
+@import './nprogress.scss';
+
+.pull-left {
+  float: left!important;
+}
+
+.width-wrap {
+  width: 1168px;
+  margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.long-btn {
+  width: 120px;
+}
+
+.text-right {
+  text-align: right;
+}
+
+h4 {
+  font-size: 14px;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #eee;
+}
+
+.warring-text-container {
+  border-radius: 4px;
+  margin: 20px 0px!important;
+  border: 1px solid #d0dbe5;
+  padding: 10px;
+  color: #8291a5;
+  .info-icon {
+    font-size: 36px;
+    text-align: center;
+    color: $theme-assist-color;
+  }
+}

@@ -285,10 +285,10 @@
       color: transparent;
       cursor: default; }
   .el-tree-node__label {
-    font-size: 14px; }
+    font-size: 12px; }
   .el-tree-node__loading-icon {
     margin-right: 8px;
-    font-size: 14px;
+    font-size: 12px;
     color: #c0c4cc; }
   .el-tree-node > .el-tree-node__children {
     overflow: hidden;

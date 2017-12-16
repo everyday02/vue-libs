@@ -1249,7 +1249,7 @@
   display: inline-block;
   position: relative;
   color: #606266;
-  font-size: 14px; }
+  font-size: 12px; }
   .el-dropdown .el-button-group {
     display: block; }
     .el-dropdown .el-button-group .el-button {
@@ -1296,7 +1296,7 @@
     line-height: 36px;
     padding: 0 20px;
     margin: 0;
-    font-size: 14px;
+    font-size: 12px;
     color: #606266;
     cursor: pointer;
     outline: none; }

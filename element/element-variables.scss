@@ -80,8 +80,8 @@ $--fill-base: $--color-white !default;
 
 /* Font
 -------------------------- */
-$--font-path: '~/libs/element/theme/fonts' !default;
-$--font-size-base: 14px !default;
+$--font-path: './fonts' !default;
+$--font-size-base: 12px !default;
 $--font-size-small: 13px !default;
 $--font-size-large: 18px !default;
 $--font-color-disabled-base: #bbb !default;
@@ -90,7 +90,7 @@ $--font-line-height-primary: 24px !default;
 
 /* Size
 -------------------------- */
-$--size-base: 14px !default;
+$--size-base: 12px !default;
 
 /* z-index
 -------------------------- */
@@ -342,8 +342,8 @@ $--input-disabled-placeholder-color: $--color-text-placeholder !default;
 $--input-medium-font-size: 14px !default;
 $--input-medium-height: 36px !default;
 
-$--input-small-font-size: 13px !default;
-$--input-small-height: 32px !default;
+$--input-small-font-size: 12px !default;
+$--input-small-height: 30px !default;
 
 $--input-mini-font-size: 12px !default;
 $--input-mini-height: 28px !default;

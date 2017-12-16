@@ -460,7 +460,7 @@
 --------------------------*/
 .el-input {
   position: relative;
-  font-size: 14px;
+  font-size: 12px;
   display: inline-block;
   width: 100%; }
   .el-input::-webkit-scrollbar {
@@ -481,7 +481,7 @@
         width: 6px; }
   .el-input .el-input__clear {
     color: #c0c4cc;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 16px;
     cursor: pointer;
     -webkit-transition: color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -584,11 +584,11 @@
     .el-input--medium .el-input__icon {
       line-height: 36px; }
   .el-input--small {
-    font-size: 13px; }
+    font-size: 12px; }
     .el-input--small .el-input__inner {
-      height: 32px; }
+      height: 30px; }
     .el-input--small .el-input__icon {
-      line-height: 32px; }
+      line-height: 30px; }
   .el-input--mini {
     font-size: 12px; }
     .el-input--mini .el-input__inner {
@@ -647,7 +647,7 @@
   display: inline-block;
   width: 100%;
   vertical-align: bottom;
-  font-size: 14px; }
+  font-size: 12px; }
   .el-textarea__inner {
     display: block;
     resize: vertical;
@@ -746,16 +746,16 @@
       padding-right: 43px; }
   .el-input-number--small {
     width: 130px;
-    line-height: 30px; }
+    line-height: 28px; }
     .el-input-number--small .el-input-number__increase, .el-input-number--small .el-input-number__decrease {
-      width: 32px;
-      font-size: 13px; }
+      width: 30px;
+      font-size: 12px; }
       .el-input-number--small .el-input-number__increase [class*=el-icon], .el-input-number--small .el-input-number__decrease [class*=el-icon] {
         -webkit-transform: scale(0.9);
         transform: scale(0.9); }
     .el-input-number--small .el-input__inner {
-      padding-left: 39px;
-      padding-right: 39px; }
+      padding-left: 37px;
+      padding-right: 37px; }
   .el-input-number--mini {
     width: 130px;
     line-height: 26px; }
@@ -794,6 +794,6 @@
   .el-input-number.is-controls-right[class*=medium] [class*=increase], .el-input-number.is-controls-right[class*=medium] [class*=decrease] {
     line-height: 17px; }
   .el-input-number.is-controls-right[class*=small] [class*=increase], .el-input-number.is-controls-right[class*=small] [class*=decrease] {
-    line-height: 15px; }
+    line-height: 14px; }
   .el-input-number.is-controls-right[class*=mini] [class*=increase], .el-input-number.is-controls-right[class*=mini] [class*=decrease] {
     line-height: 13px; }
