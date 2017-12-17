@@ -115,17 +115,17 @@
             <h3>相关附件</h3>
             <div class="files">
               <ul>
-                <li>
+                <li class="ellipsis" :title="theme.guide && theme.guide.name">
                   <label class="file-label">1.申报指南：</label>
                   <a v-if="theme.guide" v-bind:href="theme.guide.url" target="_blank">{{theme.guide.name}}</a>
                   <span v-else>暂无</span>
                 </li>
-                <li>
+                <li class="ellipsis" :title="theme.sample && theme.sample.name">
                   <label class="file-label">2.申报书样本：</label>
                   <a v-if="theme.sample" v-bind:href="theme.sample.url" target="_blank">{{theme.sample.name}}</a>
                   <span v-else>暂无</span>
                 </li>
-                <li>
+                <li class="ellipsis" :title="theme.regulation && theme.regulation.name">
                   <label class="file-label">3.管理办法：</label>
                   <a v-if="theme.regulation" v-bind:href="theme.regulation.url" target="_blank">{{theme.regulation.name}}</a>
                   <span v-else>暂无</span>
@@ -136,59 +136,53 @@
         </template>
       </el-col>
     </el-row>
-    <img class="pinglun" v-bind:src="G.resolvePicPath('/common/pinglun.png')" alt="" />
-    <img class="wenda" v-bind:src="G.resolvePicPath('/common/wenda.png')" alt="" />
+    <img class="pinglun" v-bind:src="G.path.resolvePicPath('/common/pinglun.png')" alt="" />
+    <img class="wenda" v-bind:src="G.path.resolvePicPath('/common/wenda.png')" alt="" />
   </div>
 </template>
 
 <script>
-// import { getThemeDetail, getSimilarThemes } from '@/api/themes';
-
+import apiTheme from '~/libs/api/theme'
 export default {
   name: 'home-detail',
   data: function () {
     return {
-      similarThemes: []
+      similarThemes: [],
+      theme: null
     };
   },
-  asyncComputed: {
-    async theme () {
-      if (!this.id) return null;
-      // const { data } = await getThemeDetail(this.id)
-      // return data;
-      return null;
-    }
+  created () {
+    this.get()
+  },
+  watch: {
+    id: function (newId) { this.get() }
   },
   methods: {
+    async get () {
+      try {
+        this.theme = await apiTheme.get({themeId: this.id})
+        this.similarThemes = await apiTheme.similar({themeId: this.id})
+        this.similarThemes = this.similarThemes.slice(0, 3)
+      } catch (err) {
+        this.G.message.error('获取异常')
+      }
+    },
     replaceEnterToBr(text) {
       if (!text) return null;
       return text.replace(/\r\n/g, '<br />').replace(/\n/g, '<br />');
     },
     handleItemClick (item) {
-      this.$emit('update:id', item.id);
-      this.$router.push({
-        path: `/theme/wrapper/${item.id}`
-      });
+      this.$emit('update:id', item.id)
+      this.$router.push({ path: `/theme/wrapper/${item.id}` })
     },
     goToReport: function () {
-      this.$router.push({
-        path: '/business/project/add',
-        query: {
-          themeId: this.id
-        }
-      });
+      this.$router.push({ path: '/business/project/add', query: { themeId: this.id } })
     }
   },
   mounted () {
-    /*
-    getSimilarThemes(this.id).then((resp) => {
-      console.info(resp.data);
-      this.similarThemes = resp.data.slice(0, 3);
-    })
-    */
     setTimeout(function () {
       document.documentElement.scrollTop = 0;
-    }, 100);
+    }, 100)
   },
   props: ['id']
 }

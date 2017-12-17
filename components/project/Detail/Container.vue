@@ -3,8 +3,12 @@
   <div class="pages-container">
     <slot />
   </div>
-  <el-button class="page-btn page-prev" v-if="index > 0" @click="handlePrePageClick"></el-button>
-  <el-button class="page-btn page-next" v-if="index < pages.length - 1" @click="handleNextPageClick"></el-button>
+  <el-button
+    :style="{background: 'url(' + window.G.path.resolvePicPath('/assets/project/left@2x.png') + ') no-repeat'}"
+    class="page-btn page-prev" v-if="index > 0" @click="handlePrePageClick"></el-button>
+  <el-button
+    :style="{background: 'url(' + window.G.path.resolvePicPath('/assets/project/right@2x.png') + ') no-repeat'}"
+    class="page-btn page-next" v-if="index < pages.length - 1" @click="handleNextPageClick"></el-button>
 </div>
 </template>
 
@@ -82,7 +86,7 @@ export default {
   position: relative;
   width: 100%;
   height: 100%;
-  overflow: initial;
+  overflow: hidden;// initial;
 }
 .page-btn {
   position: absolute;
@@ -98,7 +102,7 @@ export default {
   top: 36%;
   border-radius: 100% 0 0 100%;
   background: #fbf9fa;
-  background: url(../../../assets/project/left@2x.png) no-repeat;
+  // background: url(../../../assets/project/left@2x.png) no-repeat;
   background-size: contain;
   .el {
     position: relative;
@@ -109,7 +113,7 @@ export default {
   right: -36px;
   top: 36%;
   border-radius: 0 100% 100% 0;
-  background: url(../../../assets/project/right@2x.png) no-repeat;
+  // background: url(../../../assets/project/right@2x.png) no-repeat;
   background-size: contain;
   .el {
     position: relative;

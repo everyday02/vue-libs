@@ -1,6 +1,8 @@
 import fetch from '../utils/fetch'
 
 export default {
+  get: (params) => fetch('GET', '/request/info', params),
+  counts: (params) => fetch('GET', '/request/counts', params),
   listAll: (params) => fetch('GET', '/request/all', params),
   listDrafts: (params) => fetch('GET', '/request/draft', params),
   listPedding: (params) => fetch('GET', '/request/pending', params),

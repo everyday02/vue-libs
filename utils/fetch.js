@@ -66,7 +66,7 @@ const fetch = {
     // Intercept the response and…
     axios.interceptors.response.use(response => {
       NProgress.done()
-      return response
+      return response.data
     }, error => {
       NProgress.done()
       // Also, if we receive a Bad Request / Unauthorized error

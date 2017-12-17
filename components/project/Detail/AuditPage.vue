@@ -4,7 +4,7 @@
     <ul>
       <li :key="key" v-for="(item, key) in logs ? logs : []">
         {{ `【${item.action}】 ${item.flowNode ? item.flowNode.name : ''}` }}
-        <span v-if="_auth.isGov()">
+        <span v-if="G.auth.isGov()">
           ({{item.user.name}})
         </span>
         <span class="date">{{ moment(item.createdAt).format('YYYY-MM-DD HH:mm:ss') }}</span>
@@ -62,7 +62,7 @@
 
 <script>
 import moment from 'moment';
-import { uploadFile } from '@/api/project';
+import apiUtils from '~/libs/api/utils';
 
 export default {
   props: {
@@ -111,8 +111,8 @@ export default {
     submitUpload(file, index) {
       const formData = new FormData();
       formData.append('file', file);
-      uploadFile(formData).then((resp) => {
-        this.attachment = resp.data;
+      apiUtils.upload(formData).then((data) => {
+        this.attachment = data;
       }).catch((resp) => {
         this.$message((resp.response && resp.response.data.message) || '上传失败，请重新上传');
       })
@@ -188,7 +188,7 @@ export default {
     font-size: 12px;
     color: #aaa;
     margin-top: 5px;
-    padding: 5px 10px;
+    padding: 1px 10px;
   }
 }
 .btn-fujian {

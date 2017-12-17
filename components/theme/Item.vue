@@ -41,7 +41,9 @@
                 <span style="font-size: 14px;">金额不限</span>
               </template>
               <template v-if="item.moneyMin !==0 || item.moneyMax !== 0">
-                {{item.moneyMin | formatMoneyToWan(0)}}万～{{item.moneyMax | formatMoneyToWan(0)}}万
+                <div class="ellipsis">
+                  {{item.moneyMin | formatMoneyToWan(0)}}万～{{item.moneyMax | formatMoneyToWan(0)}}万
+                </div>
               </template>
             </el-col>
             <el-col class="tags" :span="8">
@@ -111,6 +113,7 @@
 
 <script>
 // import { followTheme, unfollowTheme } from '@/api/themes';
+import apiTheme from '~/libs/api/theme'
 export default {
   data () {
     return {
@@ -130,47 +133,30 @@ export default {
   ready () {},
   attached () {},
   mounted () {
-    const loginUser = localStorage.getItem('loginUser');
-    this.isLogin = (loginUser !== 'null' && loginUser !== null && loginUser);
+    this.isLogin = this.G.auth.isLogin()
   },
   methods: {
     handleShareChange(item) {
-      const url = `http://${window.location.host}${window.location.pathname}#/theme/wrapper/${item.id}`;
-      this.shareConfig.title = item.name;
-      this.shareConfig.description = item.name;
-      this.shareConfig.url = url;
-      this.shareConfig.source = url;
-      this.shareShow = true;
+      const url = this.G.path.resolveHost(`/theme/wrapper/${item.id}`)
+      this.shareConfig.title = item.name
+      this.shareConfig.description = item.name
+      this.shareConfig.url = url
+      this.shareConfig.source = url
+      this.shareShow = true
     },
     goToReport () {
-      sessionStorage.setItem('theme', JSON.stringify(this.item));
-      const theme = this.item;
-      this.$emit('itemClick');
+      // sessionStorage.setItem('theme', JSON.stringify(this.item));
+      this.$emit('itemClick')
     },
     handlefollowTheme (item) {
-      const token = localStorage.getItem('token');
-      if (!token) {
-        this.$message('请先登录');
-        return false;
-      }
-      /*
-      followTheme(item.id).then((resp) => {
-        console.info(resp);
-        this.item.followed = 1;
-      }).catch((resp) => {
-        this.$message('操作失败');
+      this.$store.dispatch('theme/followed', item).catch((resp) => {
+        this.G.message.error('操作异常')
       })
-      */
     },
     handleunfollowTheme (item) {
-      /*
-      unfollowTheme(item.id).then((resp) => {
-        console.info(resp);
-        this.item.followed = 0;
-      }).catch((resp) => {
-        this.$message('操作失败');
+      this.$store.dispatch('theme/unfollow', item).catch((resp) => {
+        this.G.message.error('操作异常')
       })
-      */
     }
   },
   components: {},
@@ -236,7 +222,7 @@ export default {
         // background: #2196F3;
       }
       .sub {
-        min-width: 32px;
+        // min-width: 32px;
         border-radius: 2px;
         // margin-left: 6px;
         position: relative;

@@ -1,6 +1,9 @@
 <template>
 <div class="fc-dialog">
-  <el-dialog class="book-dialog" :visible="visible" :before-close="handleCloseDialog" size="full" top="5%">
+  <el-dialog
+    :style="{background: 'url(' + G.path.resolvePicPath('/project/detail/bg.jpg') + ') no-repeat'}"
+    class="book-dialog el-dialog--full" :visible="visible" :before-close="handleCloseDialog" size="full"
+    top="2%">
     <el-button class="btn-back" type="primary" @click="handleCloseDialog">返 回</el-button>
     <!-- <div class="seal-todo"></div> -->
     <Container :index.sync="index" :pages="pages" :handlePrePage="handlePrePage" :handleNextPage="handleNextPage" :handleChangePage="handleChangePage">
@@ -22,36 +25,45 @@
       {{ index + 1 }} / {{ pages.length }}
     </div>
   </el-dialog>
-
+<!--
   <ProjectPDF />
+
   <GuidePDF />
+  -->
+  <!--
   <ProjectAttachments :datas="project" />
+-->
+  <!--
   <ProjectDiff :visible.sync="projectDiff.visible" :data="projectDiff.data" />
   <InvoiceDiff :visible.sync="invoiceDiff.visible" :data="invoiceDiff.data" />
+-->
 </div>
 </template>
 
 <script>
+require('~/libs/plugins/turn')
 import BaseInfoPage from './BaseInfoPage'
 import AuditPage from './AuditPage'
-import ProjectPDF from './ProjectPDF'
-import GuidePDF from './GuidePDF'
-import ProjectAttachments from './Attachments'
+// import ProjectPDF from './ProjectPDF'
+// import GuidePDF from './GuidePDF'
+// import ProjectAttachments from './Attachments'
 import ProjectDiff from './ProjectDiff'
-import InvoiceDiff from './InvoiceDiff'
+// import InvoiceDiff from './InvoiceDiff'
 import Container from './Container'
 import EventHub from './EventHub'
+import apiProject from '~/libs/api/project'
+import apiAudit from '~/libs/api/audit'
 
 export default {
   name: 'projectDetail',
   components: {
     AuditPage,
     BaseInfoPage,
-    ProjectPDF,
-    GuidePDF,
-    ProjectAttachments,
+    // ProjectPDF,
+    // GuidePDF,
+    // ProjectAttachments,
     ProjectDiff,
-    InvoiceDiff,
+    // InvoiceDiff,
     Container
   },
   props: {
@@ -107,7 +119,8 @@ export default {
           }
         };
       }
-      const data = await this.$store.dispatch('GetProjectInfo', this.pages[this.index].id)
+      const data = await apiProject.get({requestId: this.pages[this.index].id})
+      console.info(data)
       this.updateProjectInfo(this.pages[this.index].id)
       EventHub.$emit('turn-set-page', this.index);
       return data
@@ -127,7 +140,7 @@ export default {
     },
     async updateProjectInfo(id) {
       if (this.enableLogs) {
-        let logs = await this.$store.dispatch('GetDeclareLogs', id);
+        let logs = await  apiAudit.logs({requestId: id}) // this.$store.dispatch('GetDeclareLogs', id);
         this.logs = logs;
       }
     },
@@ -177,22 +190,21 @@ export default {
       top: 5% !important;
     }
     .book-dialog {
-      background: url(../../../assets/project/bg.jpg) no-repeat;
+      // background: url(../../../assets/project/bg.jpg) no-repeat;
       background-size: cover;
+      overflow: hidden;
       width: 100%;
       height: 100%;
     }
     .book-dialog /deep/.el-dialog {
         background-color: rgba(0,0,0,.1);
-        &.el-dialog--full {
-          top: 0 !important;
-          margin-top: 2%;
-          width: 72%;
-          max-width: 1200px;
-          height: 90%;
-          max-height: 750px;
-          overflow: initial;
-        }
+        top: 0 !important;
+        margin-top: 2%;
+        width: 78%;
+        max-width: 1200px;
+        height: 90%;
+        max-height: 750px;
+        overflow: initial;
         .el-dialog__header {
           display: none;
         }
@@ -231,7 +243,7 @@ export default {
 #pages {
   height: 100%;
 }
-
+/*
 .seal-todo {
   position: absolute;
   top: 30px;
@@ -242,6 +254,7 @@ export default {
   background: url(../../../assets/gov/seal-todo.png) no-repeat;
   background-size: contain;
 }
+*/
 
 .projectPDF, .guidePDF {
   height: 530px;

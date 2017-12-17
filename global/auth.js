@@ -13,8 +13,14 @@ export function removeLoginUser () {
   return localStorage.removeItem('loginUser')
 }
 
+// 是否已登录
+export function isLogin () {
+  const loginUser = getLoginUser()
+  return (loginUser !== 'null' && loginUser !== null && loginUser)
+}
+
 // 是否为政府用户
 export function isGov () {
-  const user = getLoginUser()
-  return (user.organization.type === 1 || user.organization.type === 2 || user.organization.type === 3)
+  const loginUser = getLoginUser()
+  return (loginUser.organization.type === 1 || loginUser.organization.type === 2 || loginUser.organization.type === 3)
 }
